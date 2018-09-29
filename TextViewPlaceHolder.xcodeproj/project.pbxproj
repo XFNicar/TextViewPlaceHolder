@@ -13,6 +13,7 @@
 		A05D426B215E622700021460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05D426A215E622700021460 /* Assets.xcassets */; };
 		A05D426E215E622700021460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05D426C215E622700021460 /* LaunchScreen.storyboard */; };
 		A05D4271215E622700021460 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D4270215E622700021460 /* main.m */; };
+		A05D427A215E634900021460 /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A05D4279215E634900021460 /* UITextView+PlaceHolder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		A05D426D215E622700021460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A05D426F215E622700021460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A05D4270215E622700021460 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A05D4278215E634900021460 /* UITextView+PlaceHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+PlaceHolder.h"; sourceTree = "<group>"; };
+		A05D4279215E634900021460 /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				A05D4261215E622600021460 /* AppDelegate.h */,
 				A05D4262215E622600021460 /* AppDelegate.m */,
+				A05D4278215E634900021460 /* UITextView+PlaceHolder.h */,
+				A05D4279215E634900021460 /* UITextView+PlaceHolder.m */,
 				A05D4264215E622600021460 /* ViewController.h */,
 				A05D4265215E622600021460 /* ViewController.m */,
 				A05D4267215E622600021460 /* Main.storyboard */,
@@ -144,6 +149,7 @@
 				A05D4266215E622600021460 /* ViewController.m in Sources */,
 				A05D4271215E622700021460 /* main.m in Sources */,
 				A05D4263215E622600021460 /* AppDelegate.m in Sources */,
+				A05D427A215E634900021460 /* UITextView+PlaceHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
