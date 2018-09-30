@@ -64,11 +64,14 @@ static char *AttributedPlaceHolder = "AttributedPlaceHolder";
     phLab.userInteractionEnabled = YES;
     phLab.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:phLab];
-    NSLayoutConstraint * phLeftLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.f];
+    NSLayoutConstraint * phLeftLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0f constant:4.f];
     [self addConstraint:phLeftLc];
     
-    NSLayoutConstraint * phTopLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:4.f];
+    NSLayoutConstraint * phTopLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0f constant:6.f];
     [self addConstraint:phTopLc];
+    
+//    NSLayoutConstraint * phRightLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0f constant:4.f];
+//    [self addConstraint:phRightLc];
     
     NSLayoutConstraint * phWidthLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0f];
     [self addConstraint:phWidthLc];

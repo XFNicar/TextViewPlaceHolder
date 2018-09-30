@@ -20,11 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.view addSubview:self.textView];
-//    self.IBTextView.placeHolder = @"zhanweizifu";
-    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc]initWithString:@"富文本字符串"];
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc]initWithString:@"富文本字符串,哈哈哈哈哈哈哈哈哈哈哈好哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"];
     [attri setAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15], } range:NSMakeRange(0, attri.length)];
-     [attri setAttributes:@{NSForegroundColorAttributeName: [UIColor redColor], } range:NSMakeRange(0, attri.length)];
+    [attri setAttributes:@{NSForegroundColorAttributeName: [UIColor redColor], } range:NSMakeRange(0, attri.length)];
     self.IBTextView.attributedPlaceHolder = attri;
 }
 
