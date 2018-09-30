@@ -12,46 +12,53 @@
 @implementation UITextView (PlaceHolder)
 
 static char *PlaceHolder = "PlaceHolder";
+static char *AttributedPlaceHolder = "AttributedPlaceHolder";
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
 }
 
 - (void)setPlaceHolder:(NSString *)placeHolder {
-    UILabel *phLab = nil;
-    for (UIView *subView in self.subviews) {
-        if (subView.tag == 9527) {
-            phLab = (UILabel *)subView;
-        }
-    }
-    if (phLab != nil) {
-        phLab.text = placeHolder;
-    } else {
-        [self initPlaceHolderLabWithText:placeHolder];
-    }
+    [self initPlaceHolderLabWithText:placeHolder];
     objc_setAssociatedObject(self, PlaceHolder, placeHolder, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    
 }
 
-
-
 - (NSString *)placeHolder {
-    NSString *phStr = @"";
-    for (UIView *subView in self.subviews) {
-        if (subView.tag == 9527) {
-            phStr = ((UILabel *)subView).text;
-        }
-    }
     return objc_getAssociatedObject(self, PlaceHolder);
 }
 
+- (NSAttributedString *)attributedPlaceHolder {
+    return objc_getAssociatedObject(self, AttributedPlaceHolder);
+}
+
+- (void)setAttributedPlaceHolder:(NSAttributedString *)attributedPlaceHolder {
+    [self initPlaceHolderLabWithAttributedText:attributedPlaceHolder];
+    objc_setAssociatedObject(self, AttributedPlaceHolder, attributedPlaceHolder, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void)initPlaceHolderLabWithAttributedText:(NSAttributedString *)attributedPlaceHolder {
+    UILabel *phLab = [self getPlaceHolderLab];
+    phLab.attributedText = attributedPlaceHolder;
+}
+
 - (void)initPlaceHolderLabWithText:(NSString *)placeHolder {
-    UILabel *phLab = [[UILabel alloc]init];
+    UILabel *phLab = [self getPlaceHolderLab];
+    phLab.text = placeHolder;
+}
+
+- (UILabel *)getPlaceHolderLab {
+    UILabel *phLab = nil;
+    for (UIView *subView in self.subviews) {
+        if (subView.tag == 9527) {
+            return  (UILabel *)subView;
+        }
+    }
+    
+    phLab = [[UILabel alloc]init];
     phLab.textColor = [UIColor lightGrayColor];
     phLab.tag = 9527;
     phLab.numberOfLines = 0;
     phLab.lineBreakMode = NSLineBreakByWordWrapping;
-    phLab.text = placeHolder;
     phLab.font = self.font;
     phLab.backgroundColor = [UIColor clearColor];
     phLab.userInteractionEnabled = YES;
@@ -66,8 +73,10 @@ static char *PlaceHolder = "PlaceHolder";
     NSLayoutConstraint * phWidthLc = [NSLayoutConstraint constraintWithItem:phLab attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0f];
     [self addConstraint:phWidthLc];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:nil];
-
+    phLab.hidden = (self.text.length != 0);
+    return phLab;
 }
+
 
 - (void)textDidChange:(NSNotification *)sender {
     UILabel *phLab = nil;
@@ -76,17 +85,11 @@ static char *PlaceHolder = "PlaceHolder";
             phLab = (UILabel *)subView;
         }
     }
-    if (self.text.length > 0) {
-        phLab.alpha = 0;
-    } else {
-        phLab.alpha = 1;
-    }
+    phLab.hidden = (self.text.length != 0);
 }
 
-
-
-
 @end
+
 
 
 

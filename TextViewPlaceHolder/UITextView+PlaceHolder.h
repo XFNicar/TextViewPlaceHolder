@@ -13,7 +13,9 @@
 
 @interface UITextView (PlaceHolder)
 
-@property (nonatomic, copy ) NSString *placeHolder;
+
+@property (nonatomic, copy  ) NSString              *placeHolder;
+@property (nonatomic, copy  ) NSAttributedString    *attributedPlaceHolder;
 
 @end
 

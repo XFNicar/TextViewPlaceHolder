@@ -11,20 +11,34 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) UITextView        *textView;
+@property (weak, nonatomic) IBOutlet UITextView *IBTextView;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITextView *txv = [[UITextView alloc]initWithFrame:CGRectMake(7, 200, 400, 100)];
-    [self.view addSubview:txv];
-    txv.placeHolder = @"请输入至少超过500字符的短文";
-    txv.backgroundColor = [UIColor clearColor];
-    txv.layer.cornerRadius = 3;
-    txv.layer.borderColor = [UIColor grayColor].CGColor;
-    txv.layer.borderWidth = 1;
-    txv.layer.masksToBounds = YES;
+//    [self.view addSubview:self.textView];
+//    self.IBTextView.placeHolder = @"zhanweizifu";
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc]initWithString:@"富文本字符串"];
+    [attri setAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15], } range:NSMakeRange(0, attri.length)];
+     [attri setAttributes:@{NSForegroundColorAttributeName: [UIColor redColor], } range:NSMakeRange(0, attri.length)];
+    self.IBTextView.attributedPlaceHolder = attri;
+}
+
+- (UITextView *)textView {
+    if (_textView == nil) {
+        UITextView *txv = [[UITextView alloc]initWithFrame:CGRectMake(7, 200, 400, 100)];
+        txv.backgroundColor = [UIColor clearColor];
+        txv.layer.cornerRadius = 3;
+        txv.layer.borderColor = [UIColor grayColor].CGColor;
+        txv.layer.borderWidth = 1;
+        txv.layer.masksToBounds = YES;
+        _textView = txv;
+    }
+    return _textView;
 }
 
 
